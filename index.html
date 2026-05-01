@@ -471,6 +471,27 @@ margin-top:30px;
 color:#777;
 font-size:13px;
 }
+
+#cart-items div button{
+background:red;
+color:#fff;
+border:none;
+padding:5px 8px;
+}
+
+#cart-items{
+margin-top:15px;
+}
+
+#cart-items div{
+display:flex;
+justify-content:space-between;
+background:#111;
+padding:10px;
+border:1px solid #333;
+margin-bottom:10px;
+color:#fff;
+}
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -542,7 +563,7 @@ font-size:13px;
 <img src="https://i.postimg.cc/Jnyd4dzG/web-image-10.jpg">
 <h4>Classic Suit</h4>
 <p>₹4,999</p>
-<button class="btn" onclick="addToCart('Classic Suit', 4999)">Add to Cart</button>
+<button class="btn"onclick="addToCart('Classic Suit', 4999)">Add to Cart</button>
 </div><div class="card">
 <img src="https://i.postimg.cc/NMyPfPj2/web-image-11.jpg">
 <h4>Sherwani</h4>
@@ -587,12 +608,23 @@ font-size:13px;
 <!-- CHECKOUT --><div class="section checkout">
 <h2>Checkout</h2>
 
-<div id="cart-items"></div>
-<p id="total">Total: ₹0</p>
 <input id="name" placeholder="Full Name">
 <input id="phone" placeholder="Phone Number">
 <input id="address" placeholder="Address">
+
+<div style="margin-top:20px; padding:20px; background:#111; border:1px solid #333;">
+  <h3>Your Cart</h3>
+
+  <div id="cart-items"></div>
+
+  <p style="margin-top:10px;">
+    <strong>Total: ₹<span id="total-price">0</span></strong>
+  </p>
+</div>
+
+
 <button class="btn" onclick="placeOrder()">Pay Now</button>
+
 
 <p style="margin-top:10px;color:#aaa;">
 Secure Payment powered by Razorpay
@@ -664,41 +696,76 @@ Order on WhatsApp
     © Khan Saheb Tailoring | All Rights Reserved
   </p>
 
+  
 </div>
 <script>
+
 
 let cart = [];
 
 function addToCart(name, price){
+  console.log("Adding:", name); // DEBUG
   cart.push({name, price});
-  updateCartDisplay();
+  updateCart();
 }
 
 function removeItem(index){
+  
   cart.splice(index, 1);
-  updateCartDisplay();
+  updateCart();
 }
 
-function updateCartDisplay(){
-  let cartBox = document.getElementById("cart-items");
-  let totalBox = document.getElementById("total");
+function updateCart(){
+  console.log("Cart updating...");
 
-  cartBox.innerHTML = "";
+  let container = document.getElementById("cart-items");
+  console.log("cart-items element:", container);
+  let totalBox = document.getElementById("total-price");
+  let countBox = document.getElementById("cart-count");
+
+  if(!container){
+    console.log("cart-items NOT FOUND");
+    return;
+  }
+
+  let html = "";
   let total = 0;
 
-  cart.forEach((item, index) => {
-     cartBox.innerHTML = "";
-document.getElementById("cart-count").innerText = cart.length;`
-      <div style="display:flex;justify-content:space-between;margin:10px 0;border-bottom:1px solid #333;padding-bottom:5px;">
-        <span>${item.name} - ₹${item.price}</span>
-        <button onclick="removeItem(${index})" style="background:red;color:white;border:none;padding:5px 10px;cursor:pointer;">X</button>
-      </div>
-    `;
-    total += item.price;
-  });
+  cart.forEach((item, i) => {
+  total += item.price;
 
-  totalBox.innerText = "Total: ₹" + total;
+  const div = document.createElement("div");
+  div.style.display = "flex";
+  div.style.justifyContent = "space-between";
+  div.style.margin = "10px 0";
+  div.style.background = "#111";
+  div.style.padding = "10px";
+
+  const text = document.createElement("span");
+  text.innerText = `${item.name} - ₹${item.price}`;
+
+  const btn = document.createElement("button");
+  btn.innerText = "❌";
+
+  btn.onclick = function () {
+    removeItem(i);
+  };
+
+  div.appendChild(text);
+  div.appendChild(btn);
+  container.appendChild(div);
+});
+
+  container.innerHTML = html;
+  totalBox.innerText = total;
+  if(countBox) countBox.innerText = cart.length;
 }
+
+
+
+
+
+
 
 function placeOrder() {
 
