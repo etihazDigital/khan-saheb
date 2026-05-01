@@ -3,13 +3,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Khan Saheb | Luxury Store</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet"><style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html, body{
+width:100%;
+overflow-x:hidden;
+}
+
+
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:Poppins;background:#0a0a0a;color:#fff}
 
 /* NAVBAR */
 .navbar{
-display:flex;justify-content:space-between;
-padding:20px 60px;background:#000;border-bottom:1px solid #222
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:#000;
+}
+
+.nav-right{
+display:flex;
+align-items:center;
+gap:15px;
 }
 .logo{font-family:'Playfair Display';font-size:24px}
 .nav-links {
@@ -25,7 +46,8 @@ padding:20px 60px;background:#000;border-bottom:1px solid #222
 
 /* HERO */
 .hero{
-height:90vh;
+width:100%;
+min-height:90vh;
 background:url('https://i.postimg.cc/0yf4tw4q/Costura.jpg') center/cover no-repeat;
 display:flex;
 align-items:center;
@@ -43,9 +65,10 @@ height:100%;
 background:rgba(0,0,0,0.6);
 }
 
-.hero div{
+.hero > div{
 position:relative;
-z-index:1;
+z-index:2;
+max-width:600px;
 }
 
 /* SECTION */
@@ -113,15 +136,12 @@ display:block;margin:10px 0;padding:10px;width:300px;background:#111;border:1px 
 .footer{text-align:center;padding:30px;background:#000;color:#777}
 
 #cart-icon{
-position:fixed;
-top:20px;
-right:30px;
 background:gold;
 color:black;
 padding:10px 15px;
 cursor:pointer;
 font-weight:bold;
-z-index:1000;
+
 }
 
 .hero h1{
@@ -216,13 +236,76 @@ border-radius:50%;
 object-fit:cover;
 }
 
+
+
 @media(max-width:768px){
 
-/* NAVBAR */
 .navbar{
 flex-direction:column;
 align-items:flex-start;
-padding:15px 20px;
+padding:15px;
+}
+
+.nav-right{
+width:100%;
+display:flex;
+justify-content:space-between;
+margin-top:10px;
+}
+
+.nav-links{
+display:flex;
+gap:10px;
+}
+
+.hero{
+padding:30px 15px;
+min-height:70vh;
+}
+
+.hero h1{
+font-size:28px;
+}
+
+.hero p{
+font-size:13px;
+}
+
+.categories{
+grid-template-columns:1fr 1fr;
+}
+
+.footer-grid{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+
+/* FOOTER MOBILE FIX */
+.footer-grid{
+grid-template-columns:1fr;
+gap:25px;
+text-align:center;
+}
+
+.footer{
+padding:40px 20px;
+overflow:hidden;
+}
+
+.footer{
+padding:40px 20px;
+}
+
+.footer-grid{
+grid-template-columns:1fr !important;
+gap:25px;
+text-align:center;
+}
+
+.footer-box{
+width:100%;
+}
 }
 
 .nav-links{
@@ -289,7 +372,7 @@ font-size:14px;
 grid-template-columns:1fr 1fr;
 }
 
-}
+
 
 body{
 -webkit-font-smoothing:antialiased;
@@ -350,6 +433,44 @@ padding-top:20px;
 font-size:13px;
 color:#777;
 }
+
+
+.footer{
+background:#000;
+color:#ccc;
+padding:50px 60px;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+}
+
+.footer-box h3{
+color:#fff;
+margin-bottom:10px;
+}
+
+.footer a{
+color:#ccc;
+text-decoration:none;
+}
+
+.footer a:hover{
+color:gold;
+}
+
+.footer p{
+font-size:14px;
+}
+
+.copyright{
+text-align:center;
+margin-top:30px;
+color:#777;
+font-size:13px;
+}
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -366,15 +487,22 @@ color:#777;
   <img src="https://i.postimg.cc/66Z4CL7j/khan-logo.jpg" alt="logo">
   <span>Khan Saheb</span>
 </div>
+
+<div class="nav-right">
+
+
 <div class="nav-links">
     
 <a href="#">Home</a>
 <a href="#">Shop</a>
 <a href="#">Contact</a>
+</div>
 
 
-<div id="cart-icon" onclick="toggleCart()">
+<div id="cart-btn">
 🛒 <span id="cart-count">0</span>
+</div>
+
 </div>
 <div id="cart-panel" style="display:none; position:fixed; top:60px; right:20px; width:300px; background:#111; padding:20px; border:1px solid #333; z-index:1000;">
 <h3>Your Cart</h3>
@@ -487,55 +615,56 @@ Order on WhatsApp
 <!-- FOOTER -->
 <div class="footer">
 
-<div class="footer-grid">
+  <div class="footer-grid">
 
-<div>
-<h3>Khan Saheb</h3>
-<p>Luxury tailoring crafted for modern royalty.</p>
+    <div class="footer-box">
+      <h3>Khan Saheb</h3>
+      <p>Luxury tailoring crafted for royalty.</p>
+    </div>
+
+    <div class="footer-box">
+      <h3>Contact</h3>
+
+      <p>
+        <a href="mailto:darzidesign1974@gmail.com">
+          darzidesign1974@gmail.com
+        </a>
+      </p>
+
+      <p>
+        <a href="tel:+919876543210">
+          +91 9876543210
+        </a>
+      </p>
+    </div>
+
+    <div class="footer-box">
+      <h3>Visit Us</h3>
+
+      <p>
+        <a href="https://www.google.com/maps/search/?api=1&query=Kamalpur,Hoshiarpur,Punjab" target="_blank">
+          Kamalpur, Hoshiarpur,<br>Punjab 146001
+        </a>
+      </p>
+    </div>
+
+    <div class="footer-box">
+      <h3>Connect With Us</h3>
+
+      <p>
+        <a href="https://www.instagram.com/khan_saheb_express_tailoring" target="_blank">
+          Instagram
+        </a>
+      </p>
+    </div>
+
+  </div>
+
+  <p class="copyright">
+    © Khan Saheb Tailoring | All Rights Reserved
+  </p>
+
 </div>
-
-<div>
-<h4>Contact</h4>
-
-<p>
-<i class="fa-solid fa-envelope"></i> 
-<a href="mailto:darzidesign1974@gmail.com?subject=Website Inquiry">
-darzidesign1974@gmail.com
-</a>
-</p>
-
-<p>
-<i class="fa-solid fa-phone"></i> 
-<a href="tel:+919876543210">+91 9876543210</a>
-</p>
-
-</div>
-
-<div>
-<h4>Visit Us</h4>
-<p>
-<a href="https://www.google.com/maps/search/?api=1&query=Kamalpur,Hoshiarpur,Punjab" target="_blank">
-<i class="fa-solid fa-location-dot"></i> 
-Kamalpur, Hoshiarpur, Punjab 146001
-</a>
-</p>
-</div>
-
-<div>
-<h4>Connect With Us</h4>
-<p>
-<a href="https://www.instagram.com/khan_saheb_express_tailoring" target="_blank">
-<i class="fa-brands fa-instagram"></i> Instagram
-</a>
-</p>
-</div>
-
-</div>
-
-<p class="copyright">© Khan Saheb Tailoring | All Rights Reserved</p>
-
-</div>
-
 <script>
 
 let cart = [];
