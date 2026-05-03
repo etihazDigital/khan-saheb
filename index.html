@@ -30,11 +30,11 @@ background:#000;
 .nav-right{
 display:flex;
 align-items:center;
-gap:15px;
+gap: 18px;
 }
 .logo{font-family:'Playfair Display';font-size:24px}
 .nav-links {
-    margin-right: 80px; /* pushes links left */
+    margin-right: 60px; /* pushes links left */
 }
 
 .nav-links a{
@@ -76,7 +76,21 @@ max-width:600px;
 padding:60px;
 background:linear-gradient(to bottom,#0a0a0a,#0f0f0f);
 }
-.section h2{font-family:'Playfair Display';margin-bottom:30px}
+.section h2{
+  font-family:'Playfair Display';
+  margin-bottom:30px;
+  position: relative;
+  display: inline-block;
+}
+
+.section h2::after{
+  content:"";
+  display:block;
+  width:60%;
+  height:2px;
+  background:gold;
+  margin-top:8px;
+}
 
 /* CATEGORIES */
 .categories{
@@ -105,15 +119,15 @@ border-color:gold;
 display:grid;grid-template-columns:repeat(4,1fr);gap:20px
 }
 .card{
-background:#111;
-padding:15px;
-border:1px solid #222;
-transition:0.3s ease;
+  background:#111;
+  padding:15px;
+  border:1px solid #222;
+  transition: all 0.3s ease;
 }
 
 .card:hover{
-transform:translateY(-8px) scale(1.02);
-box-shadow:0 10px 30px rgba(255,215,0,0.2);
+  transform: translateY(-5px);
+  border-color: gold;
 }
 
 .card img{
@@ -492,6 +506,29 @@ border:1px solid #333;
 margin-bottom:10px;
 color:#fff;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.toast{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#111;
+  color:#fff;
+  padding:12px 20px;
+  border:1px solid gold;
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.3s ease;
+  z-index:9999;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -514,9 +551,9 @@ color:#fff;
 
 <div class="nav-links">
     
-<a href="#">Home</a>
-<a href="#">Shop</a>
-<a href="#">Contact</a>
+<a href="index.html">Home</a>
+<a href="shop.html">Shop</a>
+<a href="#">custom</a>
 </div>
 
 
@@ -538,7 +575,7 @@ color:#fff;
 <div>
 <h1>Crafted for Royalty</h1>
 <p>Luxury tailoring designed for men who value class, precision, and presence.</p>
-<a class="btn">Shop Now</a>
+<a href="shop.html" class="btn">Shop</a>
 </div>
 </div>
 
@@ -550,10 +587,29 @@ color:#fff;
 <!-- CATEGORIES --><div class="section">
 <h2>Categories</h2>
 <div class="categories">
-<div class="cat">Suits</div>
-<div class="cat">Sherwani</div>
-<div class="cat">Kurta Sets</div>
-<div class="cat">Blazers</div>
+<a href="shop.html#suits" style="text-decoration:none;color:inherit;">
+  <div class="card">
+    <h3>Suits</h3>
+  </div>
+</a>
+
+<a href="shop.html#shirts" style="text-decoration:none;color:inherit;">
+  <div class="card">
+    <h3>Shirts</h3>
+  </div>
+</a>
+
+<a href="shop.html#trousers" style="text-decoration:none;color:inherit;">
+  <div class="card">
+    <h3>Trousers</h3>
+  </div>
+</a>
+
+<a href="shop.html#blazers" style="text-decoration:none;color:inherit;">
+  <div class="card">
+    <h3>Blazers</h3>
+  </div>
+</a>
 
 </div>
 
@@ -563,7 +619,7 @@ color:#fff;
 <img src="https://i.postimg.cc/Jnyd4dzG/web-image-10.jpg">
 <h4>Classic Suit</h4>
 <p>₹4,999</p>
-<button class="btn"onclick="addToCart('Classic Suit', 4999)">Add to Cart</button>
+<button class="btn" onclick="addToCart('Product Name', 4999)">Add to Cart</button>
 </div><div class="card">
 <img src="https://i.postimg.cc/NMyPfPj2/web-image-11.jpg">
 <h4>Sherwani</h4>
@@ -582,6 +638,91 @@ color:#fff;
 </div></div>
 </div>
 
+</div>
+
+</div>
+</div>
+
+
+
+  
+<!-- BEST SELLERS -->
+<div class="section">
+  <h2>Best Sellers</h2>
+
+  <div class="products">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1593032457861-43d3b1c7a509">
+      <h4>Premium Black Suit</h4>
+      <p>₹6,999</p>
+      <button class="btn" onclick="addToCart('Premium Black Suit', 6999)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22">
+      <h4>Royal Sherwani</h4>
+      <p>₹9,999</p>
+      <button class="btn" onclick="addToCart('Royal Sherwani', 9999)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1618886614638-80e3c103d31a">
+      <h4>Designer Kurta Set</h4>
+      <p>₹3,499</p>
+      <button class="btn" onclick="addToCart('Designer Kurta Set', 3499)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1592878849122-5f4b7d2a1c4c">
+      <h4>Luxury Blazer</h4>
+      <p>₹5,499</p>
+      <button class="btn" onclick="addToCart('Luxury Blazer', 5499)">Add to Cart</button>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- NEW ARRIVALS -->
+<div class="section">
+  <h2>New Arrivals</h2>
+
+  <div class="products">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc">
+      <h4>Modern Grey Suit</h4>
+      <p>₹6,499</p>
+      <button class="btn" onclick="addToCart('Modern Grey Suit', 6499)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
+      <h4>Classic White Shirt</h4>
+      <p>₹1,999</p>
+      <button class="btn" onclick="addToCart('Classic White Shirt', 1999)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35">
+      <h4>Luxury Waistcoat</h4>
+      <p>₹3,299</p>
+      <button class="btn" onclick="addToCart('Luxury Waistcoat', 3299)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea">
+      <h4>Premium Coat</h4>
+      <p>₹7,499</p>
+      <button class="btn" onclick="addToCart('Premium Coat', 7499)">Add to Cart</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Why choose us  -->
 <div class="section trust-banner">
 <h2>Why Choose Khan Saheb</h2>
 
@@ -604,45 +745,6 @@ color:#fff;
 
 </div>
 </div>
-
-<!-- CHECKOUT --><div class="section checkout">
-<h2>Checkout</h2>
-
-<input id="name" placeholder="Full Name">
-<input id="phone" placeholder="Phone Number">
-<input id="address" placeholder="Address">
-
-<div style="margin-top:20px; padding:20px; background:#111; border:1px solid #333;">
-  <h3>Your Cart</h3>
-
-  <div id="cart-items"></div>
-
-  <p style="margin-top:10px;">
-    <strong>Total: ₹<span id="total-price">0</span></strong>
-  </p>
-</div>
-
-
-<button class="btn" onclick="placeOrder()">Pay Now</button>
-
-
-<p style="margin-top:10px;color:#aaa;">
-Secure Payment powered by Razorpay
-</p>
-</div>
-
-<!-- WHATSAPP CTA -->
-<div class="section" style="text-align:center;">
-<h2>Get Your Custom Outfit Now</h2>
-<p style="color:#ccc;margin-bottom:20px;">
-Chat with us directly to place your custom order.
-</p>
-
-<a href="https://wa.me/919876791624" class="btn">
-Order on WhatsApp
-</a>
-</div>
-
 
 <!-- FOOTER -->
 <div class="footer">
@@ -698,117 +800,40 @@ Order on WhatsApp
 
   
 </div>
+
 <script>
 
-
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function addToCart(name, price){
-  console.log("Adding:", name); // DEBUG
   cart.push({name, price});
-  updateCart();
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  showToast(name);
 }
 
-function removeItem(index){
-  
-  cart.splice(index, 1);
-  updateCart();
-}
-
-function updateCart(){
-  console.log("Cart updating...");
-
-  let container = document.getElementById("cart-items");
-  console.log("cart-items element:", container);
-  let totalBox = document.getElementById("total-price");
+function updateCartCount(){
   let countBox = document.getElementById("cart-count");
-
-  if(!container){
-    console.log("cart-items NOT FOUND");
-    return;
+  if(countBox){
+    countBox.innerText = cart.length;
   }
-
-  let html = "";
-  let total = 0;
-
-  cart.forEach((item, i) => {
-  total += item.price;
-
-  const div = document.createElement("div");
-  div.style.display = "flex";
-  div.style.justifyContent = "space-between";
-  div.style.margin = "10px 0";
-  div.style.background = "#111";
-  div.style.padding = "10px";
-
-  const text = document.createElement("span");
-  text.innerText = `${item.name} - ₹${item.price}`;
-
-  const btn = document.createElement("button");
-  btn.innerText = "❌";
-
-  btn.onclick = function () {
-    removeItem(i);
-  };
-
-  div.appendChild(text);
-  div.appendChild(btn);
-  container.appendChild(div);
-});
-
-  container.innerHTML = html;
-  totalBox.innerText = total;
-  if(countBox) countBox.innerText = cart.length;
 }
 
+function showToast(product){
+  let toast = document.getElementById("toast");
+  if(!toast) return;
 
+  toast.innerText = product + " added to cart";
+  toast.classList.add("show");
 
-
-
-
-
-function placeOrder() {
-
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
-  const address = document.getElementById('address').value;
-
-  if(!name || !phone || !address){
-    alert("Please fill all details");
-    return;
-  }
-
-  if(cart.length === 0){
-    alert("Cart is empty");
-    return;
-  }
-
-  fetch('/order', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      name,
-      phone,
-      address,
-      cart
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    alert("Order placed successfully!");
-  });
-
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
 }
 
-function toggleCart(){
-  let panel = document.getElementById("cart-panel");
-  panel.style.display = panel.style.display === "none" ? "block" : "none";
-}
-
+updateCartCount();
 
 </script>
-  
-</div></body>
+  <div id="toast" class="toast">Added to Cart</div>
+</body>
 </html>

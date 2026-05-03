@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shop - Khan Saheb Bespoke</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#000;
+      color:#fff;
+    }
+     
+
+    .navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px 20px;
+  flex-wrap:nowrap;   /* VERY IMPORTANT */
+}
+
+    .navbar a{
+      color:#fff;
+      text-decoration:none;
+      margin-left:15px;
+    }
+ .nav-right{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.nav-links{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  white-space:nowrap;   /* prevents breaking */
+}
+
+
+.cart-icon{
+  margin-left:15px;
+  white-space:nowrap;
+}
+
+    .logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-family:'Playfair Display';
+font-size:22px;
+}
+
+.logo img{
+width:40px;
+height:40px;
+border-radius:50%;
+object-fit:cover;
+}
+
+    .section{
+      padding:40px 20px;
+    }
+
+    .section h2{
+      margin-bottom:20px;
+      border-left:3px solid gold;
+      padding-left:10px;
+    }
+
+    .products{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:#111;
+      padding:15px;
+      border:1px solid #222;
+      transition:0.3s;
+    }
+
+    .card:hover{
+      border-color:gold;
+      transform:translateY(-5px);
+    }
+
+    .card img{
+     width:100%;
+      height:200px;
+     object-fit:cover;
+     margin-bottom:10px;
+    }
+
+    .btn{
+      background:gold;
+      border:none;
+      padding:8px 12px;
+      margin-top:10px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    html {
+     scroll-behavior: smooth;
+     }
+
+
+     .toast{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#111;
+  color:#fff;
+  padding:12px 20px;
+  border:1px solid gold;
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.3s ease;
+  z-index:9999;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media (max-width: 768px){
+
+  /* NAVBAR FIX */
+  .navbar{
+    flex-direction:column;
+    gap:10px;
+    align-items:flex-start;
+  }
+
+  .left{
+    width:100%;
+    justify-content:flex-start;
+  }
+
+  .nav-links{
+    width:100%;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .right{
+    width:100%;
+    justify-content:space-between;
+  }
+
+  /* PRODUCT GRID */
+  .products{
+    grid-template-columns:1fr;
+    padding:10px;
+  }
+
+  /* PRODUCT CARD */
+  .product{
+    max-width:100%;
+  }
+
+  .product img{
+    height:200px;
+  }
+
+  /* INPUTS */
+  input, select, button{
+    font-size:14px;
+  }
+
+  /* CART PAGE */
+  .cart-item{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .cart-left{
+    flex-direction:row;
+    width:100%;
+  }
+
+  /* TEXT SIZE */
+  h1,h2,h3{
+    font-size:18px;
+  }
+}
+  </style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">
+  <img src="https://i.postimg.cc/66Z4CL7j/khan-logo.jpg" alt="logo">
+  <span>Khan Saheb</span>
+</div>
+<div class="nav-right">
+
+<div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="#">Custom</a>
+
+    <a href="cart.html" class="cart-icon">
+  🛒 <span id="cart-count">0</span>
+</a>
+
+</div>
+<div id="cart-panel" style="display:none; position:fixed; top:60px; right:20px; width:300px; background:#111; padding:20px; border:1px solid #333; z-index:1000;">
+<h3>Your Cart</h3>
+<div id="cart-items"></div>
+<p id="total">Total: ₹0</p>
+</div>
+</div>
+</div>
+  </div>
+</div>
+
+<!-- TITLE -->
+<div class="section">
+  <h2>Shop Collection</h2>
+  <p>Premium Bespoke Clothing for Every Occasion</p>
+</div>
+
+<!-- SUITS -->
+<div class="section" id="suits">
+  <h2>Suits</h2>
+  <div class="products">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0">
+      <h3>Classic Black Suit</h3>
+      <p>₹4999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf">
+      <h3>Royal Blue Suit</h3>
+      <p>₹5999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1521334884684-d80222895322">
+      <h3>Wedding Ivory Suit</h3>
+      <p>₹6999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1592878849122-5f4b7d2a1c4c">
+      <h3>Grey Formal Suit</h3>
+      <p>₹5499</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
+      <h3>Black Tuxedo</h3>
+      <p>₹7999</p>
+            <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22">
+      <h3>Maroon Party Suit</h3>
+      <p>₹6499</p>
+            <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
+      <h3>Navy Slim Fit Suit</h3>
+      <p>₹5799</p>
+            <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1593032465255-6b4b1b1d6c8a">
+      <h3>Designer Velvet Suit</h3>
+      <p>₹8999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0">
+      <h3>Classic Wedding Suit</h3>
+      <p>₹9999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126">
+      <h3>Modern Fit Suit</h3>
+      <p>₹5299</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- SHIRTS -->
+ <div class="section" id="shirts">
+  <h2>Shirts</h2>
+  <div class="products">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10">
+      <h3>White Formal Shirt</h3>
+      <p>₹1999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
+      <h3>Black Slim Shirt</h3>
+      <p>₹2199</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d">
+      <h3>Blue Cotton Shirt</h3>
+      <p>₹1899</p>
+            <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990">
+      <h3>Pink Casual Shirt</h3>
+      <p>₹1799</p>
+            <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157">
+      <h3>Denim Shirt</h3>
+      <p>₹2499</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
+      <h3>Striped Shirt</h3>
+      <p>₹2099</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68">
+      <h3>Luxury Linen Shirt</h3>
+      <p>₹2999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
+      <h3>Party Wear Shirt</h3>
+      <p>₹2299</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1618354691438-25c8c5c6a9a7">
+      <h3>Formal Grey Shirt</h3>
+      <p>₹1999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e">
+      <h3>Premium Black Shirt</h3>
+      <p>₹2499</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- TROUSERS -->
+<div class="section" id="trousers">
+  <h2>Trousers</h2>
+  <div class="products">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0">
+      <h3>Black Formal Trouser</h3>
+      <p>₹2499</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1584865288642-42078afe693b">
+      <h3>Grey Slim Fit Trouser</h3>
+      <p>₹2299</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
+      <h3>Navy Blue Trouser</h3>
+      <p>₹2399</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1602293589930-45aad59ba3ab">
+      <h3>Beige Cotton Trouser</h3>
+      <p>₹1999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519">
+      <h3>Formal Brown Trouser</h3>
+      <p>₹2199</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
+      <h3>Premium Black Slim Trouser</h3>
+      <p>₹2799</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1592878849122-5f4b7d2a1c4c">
+      <h3>Party Wear Trouser</h3>
+      <p>₹2599</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990">
+      <h3>Office Wear Trouser</h3>
+      <p>₹2399</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68">
+      <h3>Luxury Fit Trouser</h3>
+      <p>₹2999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126">
+      <h3>Classic Formal Trouser</h3>
+      <p>₹2499</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- BLAZERS -->
+<div class="section" id="blazers">
+  <h2>Blazers</h2>
+  <div class="products">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1520975693416-35a0d0b0f6d7">
+      <h3>Classic Black Blazer</h3>
+      <p>₹3999</p>
+            <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
+      <h3>Navy Blue Blazer</h3>
+      <p>₹4299</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6">
+      <h3>Grey Formal Blazer</h3>
+      <p>₹3899</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126">
+      <h3>Wedding Royal Blazer</h3>
+      <p>₹6999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1592878849122-5f4b7d2a1c4c">
+      <h3>Velvet Luxury Blazer</h3>
+      <p>₹7999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
+      <h3>Modern Slim Blazer</h3>
+      <p>₹4599</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1521334884684-d80222895322">
+      <h3>Beige Casual Blazer</h3>
+      <p>₹3999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22">
+      <h3>Party Wear Blazer</h3>
+      <p>₹5499</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990">
+      <h3>Premium Office Blazer</h3>
+      <p>₹4799</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf">
+      <h3>Designer Fit Blazer</h3>
+      <p>₹5999</p>
+      <button class="btn" onclick="addToCart('Classic Black Suit', 4999)">Add to Cart</button>
+
+    </div>
+
+  </div>
+</div>
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(name, price){
+  cart.push({name, price});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  showToast(name);
+}
+
+function updateCartCount(){
+  let countBox = document.getElementById("cart-count");
+  if(countBox){
+    countBox.innerText = cart.length;
+  }
+}
+
+function showToast(product){
+  let toast = document.getElementById("toast");
+  toast.innerText = product + " added to cart";
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
+
+updateCartCount();
+</script>
+<div id="toast" class="toast">Added to Cart</div>
+</body>
+</html>

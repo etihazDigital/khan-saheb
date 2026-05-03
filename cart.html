@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cart</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#000;
+  color:#fff;
+}
+
+/* NAVBAR (DO NOT CHANGE STYLE STRUCTURE) */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 20px;
+  background:#111;
+}
+
+.navbar a{
+  color:#fff;
+  text-decoration:none;
+  margin:0 10px;
+}
+
+/* CART SECTION */
+.section{
+  padding:20px;
+}
+
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#111;
+  padding:12px;
+  margin:10px 0;
+  border:1px solid #222;
+}
+
+.cart-left{
+  display:flex;
+  align-items:center;
+  gap: 18px;
+}
+
+.cart-left img{
+  width:60px;
+  height:60px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* REMOVE BUTTON */
+.remove-btn{
+  background:red;
+  color:#fff;
+  border:none;
+  padding:6px 10px;
+  font-size:14px;
+}
+
+/* CHECKOUT */
+input{
+  display:block;
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  background:#111;
+  border:1px solid #333;
+  color:#fff;
+}
+
+.checkout-btn{
+  background:gold;
+  border:none;
+  padding:12px;
+  font-weight:bold;
+  margin-top:10px;
+  width:100%;
+}
+
+/* TOTAL */
+.total{
+  margin-top:15px;
+  font-size:18px;
+}
+
+
+.logo{
+  width:40px;
+  height:40px;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px 20px;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+/* PUSH LINKS SLIGHTLY RIGHT */
+.nav-links{
+  margin-left:20px;
+}
+
+.navbar a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+}
+
+
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px 20px;
+}
+
+/* LEFT SIDE (LOGO + NAME TOGETHER) */
+.left{
+  display:flex;
+  align-items:center;
+  gap:8px;   /* controls logo + text spacing */
+}
+
+.logo{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* BRAND TEXT */
+.brand{
+  font-size:18px;
+  font-weight:bold;
+  color:#fff;
+}
+
+/* CENTER LINKS */
+.nav-links{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+/* LINKS STYLE */
+.nav-links a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/* RIGHT CART */
+.cart-icon{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:15px 20px;
+}
+
+/* LEFT SIDE */
+.left{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.logo{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.brand{
+  font-size:18px;
+  font-weight:bold;
+  color:#fff;
+}
+
+/* RIGHT SIDE GROUP (KEY FIX) */
+.right{
+  display:flex;
+  align-items:center;
+  gap:20px;   /* controls distance between links and cart */
+}
+
+/* LINKS */
+.nav-links{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.nav-links a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/* CART */
+.cart-icon{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+
+@media (max-width: 768px){
+
+  /* NAVBAR FIX */
+  .navbar{
+    flex-direction:column;
+    gap:10px;
+    align-items:flex-start;
+  }
+
+  .left{
+    width:100%;
+    justify-content:flex-start;
+  }
+
+  .nav-links{
+    width:100%;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .right{
+    width:100%;
+    justify-content:space-between;
+  }
+
+  /* PRODUCT GRID */
+  .products{
+    grid-template-columns:1fr;
+    padding:10px;
+  }
+
+  /* PRODUCT CARD */
+  .product{
+    max-width:100%;
+  }
+
+  .product img{
+    height:200px;
+  }
+
+  /* INPUTS */
+  input, select, button{
+    font-size:14px;
+  }
+
+  /* CART PAGE */
+  .cart-item{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .cart-left{
+    flex-direction:row;
+    width:100%;
+  }
+
+  /* TEXT SIZE */
+  h1,h2,h3{
+    font-size:18px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR (KEEP SAME AS YOUR SITE STYLE) -->
+<div class="navbar">
+
+  <!-- LEFT -->
+  <div class="left">
+    <img src="https://i.postimg.cc/66Z4CL7j/khan-logo.jpg" class="logo">
+    <span class="brand">Khan Saheb</span>
+  </div>
+
+  <!-- RIGHT (GROUP EVERYTHING TOGETHER) -->
+  <div class="right">
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="#">Custom</a>
+    </div>
+
+    <div class="cart-icon">
+      🛒 <span id="cart-count">0</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- CART -->
+<div class="section">
+
+  <h2>Your Cart</h2>
+
+  <div id="cart-items"></div>
+
+  <div class="total">
+    Total: ₹<span id="total-price">0</span>
+  </div>
+
+  <!-- CHECKOUT -->
+  <h2 style="margin-top:40px;">Checkout</h2>
+
+  <input id="name" placeholder="Full Name">
+  <input id="phone" placeholder="Phone Number">
+  <input id="address" placeholder="Address">
+
+  <button class="checkout-btn" onclick="placeOrder()">Place Order</button>
+
+</div>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function renderCart(){
+  let container = document.getElementById("cart-items");
+  let totalBox = document.getElementById("total-price");
+
+  let html = "";
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    total += item.price;
+
+    html += `
+      <div class="cart-item">
+
+        <div class="cart-left">
+          <img src="${item.image || 'https://via.placeholder.com/60'}">
+          <span>${item.name} - ₹${item.price}</span>
+        </div>
+
+        <button class="remove-btn" onclick="removeItem(${index})">❌</button>
+
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+  totalBox.innerText = total;
+  updateCartCount();
+}
+
+function removeItem(index){
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+function updateCartCount(){
+  let count = document.getElementById("cart-count");
+  if(count){
+    count.innerText = cart.length;
+  }
+}
+
+function placeOrder(){
+
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
+
+  if(!name || !phone || !address){
+    alert("Please fill all details");
+    return;
+  }
+
+  if(cart.length === 0){
+    alert("Cart is empty");
+    return;
+  }
+
+  alert("Order placed successfully!");
+
+  cart = [];
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  renderCart();
+}
+
+renderCart();
+
+</script>
+
+</body>
+</html>
