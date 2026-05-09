@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Customize</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:black;
+  color:white;
+  font-family:Poppins,sans-serif;
+}
+
+/* NAVBAR */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background:#000;
+  border-bottom:1px solid #222;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+}
+
+.logo img{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
+
+.nav-links{
+  display:flex;
+  gap:20px;
+}
+
+.nav-links a{
+  color:#ccc;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:gold;
+}
+
+#cart-btn{
+  background:gold;
+  color:black;
+  padding:10px 15px;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .navbar{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:15px 20px;
+  }
+
+  .nav-right{
+    width:100%;
+    justify-content:space-between;
+    margin-top:15px;
+  }
+
+  .nav-links{
+    gap:12px;
+  }
+
+}
+    body{
+      margin:0;
+      background:black;
+      color:white;
+      font-family:Arial;
+    }
+
+    .custom-page{
+      padding:20px;
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    .section{
+      margin-bottom:50px;
+    }
+
+    .category{
+      margin-top:30px;
+    }
+
+    .category h3{
+      margin-bottom:20px;
+    }
+
+    .garment-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+      gap:20px;
+    }
+
+    .garment-card{
+      background:#111;
+      border:1px solid #222;
+      border-radius:10px;
+      overflow:hidden;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .garment-card:hover{
+      transform:translateY(-5px);
+      border-color:gold;
+    }
+
+    .garment-card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .garment-card p{
+      text-align:center;
+      padding:10px;
+    }
+
+    .color-palette{
+  display:flex;
+  gap:15px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+.color-circle{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  border:2px solid #333;
+  cursor:pointer;
+}
+
+.white-color{
+  border:2px solid #777;
+}
+
+.garment-card.active{
+  border:2px solid gold;
+}
+
+.color-circle.active{
+  border:2px solid gold;
+  transform:scale(1.1);
+}
+
+
+.fabric-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+  gap:15px;
+  margin-top:20px;
+}
+
+.fabric-card{
+  background:#111;
+  border:1px solid #333;
+  padding:20px;
+  text-align:center;
+  border-radius:8px;
+}
+
+.fabric-card.active{
+  border:2px solid gold;
+  transform:scale(1.03);
+}
+
+
+.image-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+  gap:10px;
+  margin-top:20px;
+}
+
+.image-grid img{
+  width:100%;
+  height:180px;          /* FIXED HEIGHT */
+  object-fit:cover;      /* IMPORTANT: stops stretching */
+  border-radius:8px;
+  cursor:pointer;
+  border:2px solid transparent;
+  transition:0.3s;
+}
+
+.image-grid img:hover{
+  transform:scale(1.03);
+}
+
+.image-grid img.active{
+  border:2px solid gold;
+}
+
+
+.measurement-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
+
+.measurement-box{
+  display:flex;
+  flex-direction:column;
+}
+
+.measurement-box label{
+  margin-bottom:8px;
+}
+
+.measurement-box input{
+  padding:12px;
+  background:#111;
+  border:1px solid #333;
+  color:white;
+  border-radius:6px;
+}
+
+.summary-box{
+  background:#111;
+  border:1px solid #333;
+  border-radius:10px;
+  padding:20px;
+}
+
+.summary-box p{
+  margin-bottom:15px;
+  font-size:16px;
+}
+
+.checkout-btn{
+  width:100%;
+  padding:16px;
+  background:gold;
+  color:black;
+  border:none;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+  border-radius:8px;
+  margin-top:20px;
+  transition:0.3s;
+}
+
+.checkout-btn:hover{
+  opacity:0.85;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <div class="custom-page">
+
+
+    <div class="navbar">
+
+  <div class="logo">
+    <img src="https://i.postimg.cc/66Z4CL7j/khan-logo.jpg">
+    <span>Khan Saheb</span>
+  </div>
+
+  <div class="nav-right">
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="custom.html">Custom</a>
+      <a href="cart.html">Cart</a>
+    </div>
+
+    <div id="cart-btn">
+      🛒 <span id="cart-count">0</span>
+    </div>
+
+  </div>
+
+</div>
+    <h1 class="title">Customize Your Outfit</h1>
+
+    <!-- GARMENT SECTION -->
+    <section class="section">
+
+      <h2>Select Garment Type</h2>
+
+      <!-- TOP WEAR -->
+      <div class="category">
+
+        <h3>Top Wear</h3>
+
+        <div class="garment-grid">
+
+          <div class="garment-card" onclick="selectGarment(this)">
+            <img src="https://via.placeholder.com/250">
+            <p>Coat</p>
+          </div>
+
+          <div class="garment-card" onclick="selectGarment(this)">
+            <img src="https://via.placeholder.com/250">
+            <p>Waistcoat</p>
+          </div>
+
+          <div class="garment-card" onclick="selectGarment(this)">
+            <img src="https://via.placeholder.com/250">
+            <p>Nehru Jacket</p>
+          </div>
+
+          <div class="garment-card" onclick="selectGarment(this)">
+            <img src="https://via.placeholder.com/250">
+            <p>Shirt</p>
+          </div>
+
+          <div class="garment-card" onclick="selectGarment(this)">
+            <img src="https://via.placeholder.com/250">
+            <p>Kurta</p>
+          </div>
+
+          <div class="garment-card" onclick="selectGarment(this)">
+            <img src="https://via.placeholder.com/250">
+            <p>Hunter Shirt</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- BOTTOM WEAR -->
+      <div class="category">
+
+        <h3>Bottom Wear</h3>
+
+        <div class="garment-grid">
+
+          <div class="garment-card" onclick="selectGarment(this)">
+            <img src="https://via.placeholder.com/250">
+            <p>Pant</p>
+          </div>
+
+          <div class="garment-card" onclick="selectGarment(this)">
+            <img src="https://via.placeholder.com/250">
+            <p>Pajama</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="section">
+
+  <h2>Select Fabric </h2>
+
+  <div class="color-palette">
+
+<div class="color-circle" style="background:black;" onclick="selectColor(this,'black')"></div>
+<div class="color-circle" style="background:navy;" onclick="selectColor(this,'navy')"></div>
+<div class="color-circle" style="background:grey;" onclick="selectColor(this,'grey')"></div>
+<div class="color-circle" style="background:rgb(77, 53, 53);" onclick="selectColor(this,'brown')"></div>
+<div class="color-circle" style="background:beige;" onclick="selectColor(this,'beige')"></div>
+<div class="color-circle" style="background:white;" onclick="selectColor(this,'white')"></div>
+<div class="color-circle" style="background:maroon;" onclick="selectColor(this,'maroon')"></div>
+  </div>
+
+</section>
+
+
+<div id="fabricContainer" class="fabric-grid"></div>
+
+<div id="imageContainer" class="image-grid"></div>
+
+<section class="section">
+
+  <h2>Measurements</h2>
+
+  <div id="measurementContainer" class="measurement-grid">
+
+  </div>
+
+</section>
+
+<section class="section">
+
+  <h2>Order Summary</h2>
+
+  <div class="summary-box">
+
+    <button class="checkout-btn" onclick="saveCustomOrder()">
+  Proceed To Checkout
+</button>
+
+
+  <div class="summary-image-box">
+    <img id="summaryImage" src="" alt="">
+  </div>
+
+  <p><strong>Garment:</strong> <span id="summaryGarment">Not Selected</span></p>
+
+  <p><strong>Color:</strong> <span id="summaryColor">Not Selected</span></p>
+
+  <p><strong>Fabric:</strong> <span id="summaryFabric">Not Selected</span></p>
+
+  <p><strong>Price:</strong> ₹<span id="summaryPrice">0</span></p>
+
+</div>
+
+</section>
+
+
+  </div>
+<script>
+
+function selectGarment(el){
+
+  document.querySelectorAll(".garment-card").forEach(card=>{
+    card.classList.remove("active");
+  });
+
+  el.classList.add("active");
+
+  selectedGarment = el.querySelector("p").innerText;
+
+document.getElementById("summaryGarment").innerText = selectedGarment;
+
+showMeasurements(selectedGarment);
+
+}
+
+function showMeasurements(garment){
+
+  let container = document.getElementById("measurementContainer");
+
+  container.innerHTML = "";
+
+  if(!measurements[garment]) return;
+
+  measurements[garment].forEach(item => {
+
+    let div = document.createElement("div");
+
+    div.className = "measurement-box";
+
+    div.innerHTML = `
+      <label>${item}</label>
+      <input type="text" placeholder="Enter ${item}">
+    `;
+
+    container.appendChild(div);
+
+  });
+
+}
+function selectColor(el, color){
+
+  document.querySelectorAll(".color-circle").forEach(c=>{
+    c.classList.remove("active");
+  });
+
+  el.classList.add("active");
+
+  selectedColor = color;
+  document.getElementById("summaryColor").innerText = color;
+
+  showFabricsForColor(color);
+}
+
+let selectedGarment = "";
+let selectedColor = "";
+let selectedFabric = "";
+let selectedImage = "";
+
+function selectFabric(el){
+
+  document.querySelectorAll(".fabric-card").forEach(f=>{
+    f.classList.remove("active");
+  });
+
+  el.classList.add("active");
+
+  selectedFabric = el.innerText;
+  document.getElementById("summaryFabric").innerText = selectedFabric;
+
+  showFabricImages(selectedColor, selectedFabric);
+}
+
+
+function showFabricImages(color, fabric){
+
+  let container = document.getElementById("imageContainer");
+
+  container.innerHTML = "";
+
+  if(!fabricImages[color] || !fabricImages[color][fabric]){
+    return;
+  }
+
+  fabricImages[color][fabric].forEach(img => {
+
+    let image = document.createElement("img");
+
+    image.src = img;
+
+    image.onclick = () => {
+
+  document.querySelectorAll(".image-grid img").forEach(i=>{
+    i.classList.remove("active");
+  });
+
+  image.classList.add("active");
+
+  selectedImage = img;
+
+};
+
+    container.appendChild(image);
+
+  });
+
+}
+
+const fabricMap = {
+  black: ["Cotton", "Wool", "Linen", "Silk"],
+  navy: ["Cotton", "Wool"],
+  grey: ["Wool", "Linen"],
+  brown: ["Cotton", "Linen"],
+  beige: ["Linen", "Cotton"],
+  white: ["Cotton", "Linen", "Silk"],
+  maroon: ["Wool", "Silk"]
+};
+
+
+const garmentPrices = {
+  Coat: 5999,
+  Waistcoat: 3499,
+  "Nehru Jacket": 4499,
+  Shirt: 2499,
+  Kurta: 2999,
+  "Hunter Shirt": 2799,
+  Pant: 2199,
+  Pajama: 1999
+};
+
+
+const fabricImages = {
+
+  black: {
+    Cotton: [
+      "https://via.placeholder.com/300x200?text=Black+Cotton+1",
+      "https://via.placeholder.com/300x200?text=Black+Cotton+2",
+      "https://via.placeholder.com/300x200?text=Black+Cotton+3",
+      "https://via.placeholder.com/300x200?text=Black+Cotton+4",
+      "https://via.placeholder.com/300x200?text=Black+Cotton+5"
+    ],
+    Wool: [
+      "https://via.placeholder.com/300x200?text=Black+Wool+1",
+      "https://via.placeholder.com/300x200?text=Black+Wool+2",
+      "https://via.placeholder.com/300x200?text=Black+Wool+3",
+      "https://via.placeholder.com/300x200?text=Black+Wool+4",
+      "https://via.placeholder.com/300x200?text=Black+Wool+5"
+    ],
+    Linen: [
+      "https://via.placeholder.com/300x200?text=Black+Linen+1",
+      "https://via.placeholder.com/300x200?text=Black+Linen+2",
+      "https://via.placeholder.com/300x200?text=Black+Linen+3",
+      "https://via.placeholder.com/300x200?text=Black+Linen+4",
+      "https://via.placeholder.com/300x200?text=Black+Linen+5"
+    ],
+    Silk: [
+      "https://via.placeholder.com/300x200?text=Black+Silk+1",
+      "https://via.placeholder.com/300x200?text=Black+Silk+2",
+      "https://via.placeholder.com/300x200?text=Black+Silk+3",
+      "https://via.placeholder.com/300x200?text=Black+Silk+4",
+      "https://via.placeholder.com/300x200?text=Black+Silk+5"
+    ]
+  },
+
+  navy: {
+    Cotton: [
+      "https://via.placeholder.com/300x200?text=Navy+Cotton+1",
+      "https://via.placeholder.com/300x200?text=Navy+Cotton+2",
+      "https://via.placeholder.com/300x200?text=Navy+Cotton+3",
+      "https://via.placeholder.com/300x200?text=Navy+Cotton+4",
+      "https://via.placeholder.com/300x200?text=Navy+Cotton+5"
+    ],
+    Wool: [
+      "https://via.placeholder.com/300x200?text=Navy+Wool+1",
+      "https://via.placeholder.com/300x200?text=Navy+Wool+2",
+      "https://via.placeholder.com/300x200?text=Navy+Wool+3",
+      "https://via.placeholder.com/300x200?text=Navy+Wool+4",
+      "https://via.placeholder.com/300x200?text=Navy+Wool+5"
+    ],
+    Linen: [
+      "https://via.placeholder.com/300x200?text=Navy+Linen+1",
+      "https://via.placeholder.com/300x200?text=Navy+Linen+2",
+      "https://via.placeholder.com/300x200?text=Navy+Linen+3",
+      "https://via.placeholder.com/300x200?text=Navy+Linen+4",
+      "https://via.placeholder.com/300x200?text=Navy+Linen+5"
+    ],
+    Silk: [
+      "https://via.placeholder.com/300x200?text=Navy+Silk+1",
+      "https://via.placeholder.com/300x200?text=Navy+Silk+2",
+      "https://via.placeholder.com/300x200?text=Navy+Silk+3",
+      "https://via.placeholder.com/300x200?text=Navy+Silk+4",
+      "https://via.placeholder.com/300x200?text=Navy+Silk+5"
+    ]
+  },
+
+  grey: {
+    Cotton: [
+      "https://via.placeholder.com/300x200?text=Grey+Cotton+1",
+      "https://via.placeholder.com/300x200?text=Grey+Cotton+2",
+      "https://via.placeholder.com/300x200?text=Grey+Cotton+3",
+      "https://via.placeholder.com/300x200?text=Grey+Cotton+4",
+      "https://via.placeholder.com/300x200?text=Grey+Cotton+5"
+    ],
+    Wool: [
+      "https://via.placeholder.com/300x200?text=Grey+Wool+1",
+      "https://via.placeholder.com/300x200?text=Grey+Wool+2",
+      "https://via.placeholder.com/300x200?text=Grey+Wool+3",
+      "https://via.placeholder.com/300x200?text=Grey+Wool+4",
+      "https://via.placeholder.com/300x200?text=Grey+Wool+5"
+    ]
+  },
+
+  brown: {
+    Cotton: [
+      "https://via.placeholder.com/300x200?text=Brown+Cotton+1",
+      "https://via.placeholder.com/300x200?text=Brown+Cotton+2",
+      "https://via.placeholder.com/300x200?text=Brown+Cotton+3",
+      "https://via.placeholder.com/300x200?text=Brown+Cotton+4",
+      "https://via.placeholder.com/300x200?text=Brown+Cotton+5"
+    ],
+    Linen: [
+      "https://via.placeholder.com/300x200?text=Brown+Linen+1",
+      "https://via.placeholder.com/300x200?text=Brown+Linen+2",
+      "https://via.placeholder.com/300x200?text=Brown+Linen+3",
+      "https://via.placeholder.com/300x200?text=Brown+Linen+4",
+      "https://via.placeholder.com/300x200?text=Brown+Linen+5"
+    ]
+  },
+
+  beige: {
+    Cotton: [
+      "https://via.placeholder.com/300x200?text=Beige+Cotton+1",
+      "https://via.placeholder.com/300x200?text=Beige+Cotton+2",
+      "https://via.placeholder.com/300x200?text=Beige+Cotton+3",
+      "https://via.placeholder.com/300x200?text=Beige+Cotton+4",
+      "https://via.placeholder.com/300x200?text=Beige+Cotton+5"
+    ],
+    Linen: [
+      "https://via.placeholder.com/300x200?text=Beige+Linen+1",
+      "https://via.placeholder.com/300x200?text=Beige+Linen+2",
+      "https://via.placeholder.com/300x200?text=Beige+Linen+3",
+      "https://via.placeholder.com/300x200?text=Beige+Linen+4",
+      "https://via.placeholder.com/300x200?text=Beige+Linen+5"
+    ]
+  },
+
+  white: {
+    Cotton: [
+      "https://via.placeholder.com/300x200?text=White+Cotton+1",
+      "https://via.placeholder.com/300x200?text=White+Cotton+2",
+      "https://via.placeholder.com/300x200?text=White+Cotton+3",
+      "https://via.placeholder.com/300x200?text=White+Cotton+4",
+      "https://via.placeholder.com/300x200?text=White+Cotton+5"
+    ],
+    Linen: [
+      "https://via.placeholder.com/300x200?text=White+Linen+1",
+      "https://via.placeholder.com/300x200?text=White+Linen+2",
+      "https://via.placeholder.com/300x200?text=White+Linen+3",
+      "https://via.placeholder.com/300x200?text=White+Linen+4",
+      "https://via.placeholder.com/300x200?text=White+Linen+5"
+    ],
+    Silk: [
+      "https://via.placeholder.com/300x200?text=White+Silk+1",
+      "https://via.placeholder.com/300x200?text=White+Silk+2",
+      "https://via.placeholder.com/300x200?text=White+Silk+3",
+      "https://via.placeholder.com/300x200?text=White+Silk+4",
+      "https://via.placeholder.com/300x200?text=White+Silk+5"
+    ]
+  },
+
+  maroon: {
+    Wool: [
+      "https://via.placeholder.com/300x200?text=Maroon+Wool+1",
+      "https://via.placeholder.com/300x200?text=Maroon+Wool+2",
+      "https://via.placeholder.com/300x200?text=Maroon+Wool+3",
+      "https://via.placeholder.com/300x200?text=Maroon+Wool+4",
+      "https://via.placeholder.com/300x200?text=Maroon+Wool+5"
+    ],
+    Silk: [
+      "https://via.placeholder.com/300x200?text=Maroon+Silk+1",
+      "https://via.placeholder.com/300x200?text=Maroon+Silk+2",
+      "https://via.placeholder.com/300x200?text=Maroon+Silk+3",
+      "https://via.placeholder.com/300x200?text=Maroon+Silk+4",
+      "https://via.placeholder.com/300x200?text=Maroon+Silk+5"
+    ]
+  }
+
+};
+
+
+function showFabricsForColor(color){
+
+  const container = document.getElementById("fabricContainer");
+
+  container.innerHTML = "";
+
+  let fabrics = fabricMap[color];
+
+  fabrics.forEach(fabric => {
+
+    let div = document.createElement("div");
+    div.className = "fabric-card";
+    div.innerText = fabric;
+
+    div.onclick = () => selectFabric(div);
+
+    container.appendChild(div);
+
+  });
+
+}
+
+const measurements = {
+
+  Coat: [
+    "Length",
+    "Chest",
+    "Stomach",
+    "Hip",
+    "Shoulder",
+    "Sleeve Length",
+    "Neck",
+    "Cross Back"
+  ],
+
+  Waistcoat: [
+    "Length",
+    "Chest",
+    "Stomach",
+    "Hip"
+  ],
+
+  "Nehru Jacket": [
+    "Length",
+    "Chest",
+    "Stomach",
+    "Hip",
+    "Shoulder",
+    "Neck"
+  ],
+
+  Shirt: [
+    "Length",
+    "Chest",
+    "Stomach",
+    "Hip",
+    "Shoulder",
+    "Sleeve Length",
+    "Neck",
+    "Cross Back"
+  ],
+
+  Kurta: [
+    "Length",
+    "Chest",
+    "Stomach",
+    "Hip",
+    "Shoulder",
+    "Sleeve Length",
+    "Neck"
+  ],
+
+  "Hunter Shirt": [
+    "Length",
+    "Chest",
+    "Stomach",
+    "Hip",
+    "Shoulder",
+    "Sleeve Length",
+    "Neck"
+  ],
+
+  Pant: [
+    "Waist",
+    "Hips",
+    "Length",
+    "Inside",
+    "Bottom",
+    "Knee",
+    "Thigh",
+    "Fly"
+  ],
+
+  Pajama: [
+    "Waist",
+    "Hips",
+    "Length",
+    "Inside",
+    "Bottom"
+  ]
+};
+
+
+function saveCustomOrder(){
+
+  const measurementInputs = document.querySelectorAll(".measurement-box input");
+
+  let measurementData = {};
+
+  measurementInputs.forEach(input => {
+
+    const label = input.previousElementSibling.innerText;
+
+    measurementData[label] = input.value;
+
+  });
+
+  const customOrder = {
+  garment: selectedGarment,
+  color: selectedColor,
+  fabric: selectedFabric,
+  image: selectedImage,
+  price: garmentPrices[selectedGarment],
+  measurements: measurementData
+};
+
+  localStorage.setItem(
+    "customOrder",
+    JSON.stringify(customOrder)
+  );
+
+  window.location.href = "cart.html";
+
+}
+
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function updateCartCount(){
+
+  let countBox = document.getElementById("cart-count");
+
+  if(countBox){
+    countBox.innerText = cart.length;
+  }
+
+}
+
+updateCartCount();
+</script>
+</body>
+</html>
