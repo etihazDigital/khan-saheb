@@ -75,24 +75,93 @@ body{
   cursor:pointer;
 }
 
+.menu-toggle{
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+}
+
+
 /* MOBILE */
 @media(max-width:768px){
 
-  .navbar{
-    flex-direction:column;
-    align-items:flex-start;
-    padding:15px 20px;
-  }
+.navbar{
+  padding:14px 16px;
+  position:relative;
+}
 
-  .nav-right{
-    width:100%;
-    justify-content:space-between;
-    margin-top:15px;
-  }
+.logo{
+  font-size:18px;
+  gap:8px;
+}
 
-  .nav-links{
-    gap:12px;
-  }
+.logo img{
+  width:34px;
+  height:34px;
+}
+
+.menu-toggle{
+  display:block;
+}
+
+.nav-right{
+  position:absolute;
+  top:70px;
+  left:0;
+  width:100%;
+  background:#0d0d0d;
+  border-top:1px solid #222;
+
+  display:none;
+  flex-direction:column;
+  align-items:flex-start;
+
+  padding:20px;
+  z-index:999;
+}
+
+.nav-right.active{
+  display:flex;
+}
+
+.nav-links{
+  flex-direction:column;
+  width:100%;
+  gap:18px;
+}
+
+.nav-links a{
+  font-size:15px;
+}
+
+#cart-btn{
+  margin-top:20px;
+  width:100%;
+  text-align:center;
+}
+
+.garment-grid{
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.garment-card img{
+  height:220px;
+}
+
+.garment-card p{
+  font-size:14px;
+  padding:12px;
+}
+
+.category h2{
+  font-size:26px;
+}
+
+.title{
+  font-size:32px;
+}
 
 }
     body{
@@ -130,29 +199,39 @@ body{
     }
 
     .garment-card{
-      background:#111;
-      border:1px solid #222;
-      border-radius:10px;
-      overflow:hidden;
-      cursor:pointer;
-      transition:0.3s;
-    }
+  background:#111;
+  border:1px solid #222;
+  border-radius:14px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:0.4s;
+  position:relative;
+}
 
-    .garment-card:hover{
-      transform:translateY(-5px);
-      border-color:gold;
-    }
+.garment-card:hover{
+  transform:translateY(-10px);
+  border-color:gold;
+  box-shadow:0 15px 40px rgba(0,0,0,0.5);
+}
 
     .garment-card img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-    }
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    transition:0.5s;
+}
+    .garment-card:hover img{
+    transform:scale(1.06);
+}
 
     .garment-card p{
-      text-align:center;
-      padding:10px;
-    }
+     text-align:center;
+     padding:18px;
+     font-size:18px;
+     font-weight:500;
+     letter-spacing:1px;
+     background:#0d0d0d;
+}
 
     .color-palette{
   display:flex;
@@ -284,19 +363,59 @@ body{
   opacity:0.85;
 }
 
-  </style>
-</head>
+.category{
+  margin-top:70px;
+}
 
+.category h2{
+  font-size:34px;
+  margin-bottom:25px;
+  font-family:'Playfair Display', serif;
+  color:gold;
+  border-bottom:1px solid #222;
+  padding-bottom:12px;
+  letter-spacing:1px;
+}
+
+@media(max-width:768px){
+
+  .garment-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+  }
+
+  .garment-card img{
+    height:220px;
+  }
+
+  .garment-card p{
+    font-size:14px;
+    padding:12px;
+  }
+
+  .category h2{
+    font-size:26px;
+  }
+
+  .title{
+    font-size:32px;
+  }
+
+}
+
+  </style>
 <body>
 
-  <div class="custom-page">
-
-
-    <div class="navbar">
+<!-- NAVBAR -->
+<div class="navbar">
 
   <div class="logo">
     <img src="https://i.postimg.cc/66Z4CL7j/khan-logo.jpg">
     <span>Khan Saheb</span>
+  </div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">
+    ☰
   </div>
 
   <div class="nav-right">
@@ -315,565 +434,148 @@ body{
   </div>
 
 </div>
-    <h1 class="title">Customize Your Outfit</h1>
 
-    <!-- GARMENT SECTION -->
-    <section class="section">
+<!-- PAGE -->
+<div class="custom-page">
 
-      <h2>Select Garment Type</h2>
+  <h1 class="title">Choose Your Garment</h1>
 
-      <!-- TOP WEAR -->
-      <div class="category">
+  <!-- FORMAL WEAR -->
+  <section class="category">
 
-        <h3>Top Wear</h3>
+    <h2>Formal Wear</h2>
 
-        <div class="garment-grid">
+    <div class="garment-grid">
 
-          <div class="garment-card" onclick="selectGarment(this)">
-            <img src="https://via.placeholder.com/250">
-            <p>Coat</p>
-          </div>
-
-          <div class="garment-card" onclick="selectGarment(this)">
-            <img src="https://via.placeholder.com/250">
-            <p>Waistcoat</p>
-          </div>
-
-          <div class="garment-card" onclick="selectGarment(this)">
-            <img src="https://via.placeholder.com/250">
-            <p>Nehru Jacket</p>
-          </div>
-
-          <div class="garment-card" onclick="selectGarment(this)">
-            <img src="https://via.placeholder.com/250">
-            <p>Shirt</p>
-          </div>
-
-          <div class="garment-card" onclick="selectGarment(this)">
-            <img src="https://via.placeholder.com/250">
-            <p>Kurta</p>
-          </div>
-
-          <div class="garment-card" onclick="selectGarment(this)">
-            <img src="https://via.placeholder.com/250">
-            <p>Hunter Shirt</p>
-          </div>
-
-        </div>
-
+      <div class="garment-card" onclick="openBuilder('Tuxedo')">
+        <img src="https://i.postimg.cc/V6qWtWFs/The-Satin-Black-Tuxedo-A-Symbol-of-Refined-Sophistication.jpg">
+        <p>Tuxedo</p>
       </div>
 
-      <!-- BOTTOM WEAR -->
-      <div class="category">
-
-        <h3>Bottom Wear</h3>
-
-        <div class="garment-grid">
-
-          <div class="garment-card" onclick="selectGarment(this)">
-            <img src="https://via.placeholder.com/250">
-            <p>Pant</p>
-          </div>
-
-          <div class="garment-card" onclick="selectGarment(this)">
-            <img src="https://via.placeholder.com/250">
-            <p>Pajama</p>
-          </div>
-
-        </div>
-
+      <div class="garment-card" onclick="openBuilder('2 Piece Suit')">
+        <img src="https://i.postimg.cc/9MdY9YYn/blazer-jacket-Overcoat-Suit-for-Men-Formal-Suit-Classic-2-Piece-Charcoal-Black-Double-Breasted-Wool.jpg">
+        <p>2 Piece Suit</p>
       </div>
 
-    </section>
+      <div class="garment-card" onclick="openBuilder('Double Breasted Suit')">
+        <img src="https://i.postimg.cc/0QY0S00t/Mens-navy-blue-pinstripe-double-breasted-blazer-with-white-pants-Custom-tailored-wedding-outfit.jpg">
+        <p>Double Breasted Suit</p>
+      </div>
 
-    <section class="section">
+      <div class="garment-card" onclick="openBuilder('Coat')">
+        <img src="https://i.postimg.cc/nz4GmG1n/Ivory-Double-Breasted-Suit-Cream-Wedding-Tuxedo-Set-Formal-Blazer-Pants.jpg">
+        <p>Coat</p>
+      </div>
 
-  <h2>Select Fabric </h2>
+      <div class="garment-card" onclick="openBuilder('Waistcoat')">
+        <img src="https://i.postimg.cc/vBrtntvd/New-Men-s-Herringbone-Wool-Blend-Suit-Vest-Retro-Lapel-Chain-Decorated-Waistcoat.jpg">
+        <p>Waistcoat</p>
+      </div>
 
-  <div class="color-palette">
+      <div class="garment-card" onclick="openBuilder('Shirt')">
+        <img src="https://i.postimg.cc/xCDPq4MR/Men-s-Dress-Shirt-Non-Iron-Shirt-French-Cuff-Shirt-Collared-Shirt-Graphic-Prints-Wedding-Street-Pink.jpg">
+        <p>Shirt</p>
+      </div>
 
-<div class="color-circle" style="background:black;" onclick="selectColor(this,'black')"></div>
-<div class="color-circle" style="background:navy;" onclick="selectColor(this,'navy')"></div>
-<div class="color-circle" style="background:grey;" onclick="selectColor(this,'grey')"></div>
-<div class="color-circle" style="background:rgb(77, 53, 53);" onclick="selectColor(this,'brown')"></div>
-<div class="color-circle" style="background:beige;" onclick="selectColor(this,'beige')"></div>
-<div class="color-circle" style="background:white;" onclick="selectColor(this,'white')"></div>
-<div class="color-circle" style="background:maroon;" onclick="selectColor(this,'maroon')"></div>
-  </div>
+      <div class="garment-card" onclick="openBuilder('Pant')">
+        <img src="https://i.postimg.cc/C1T4dQks/Voor-heren-Broek-Pakken-Kostuumbroek-Knop-Voorvak-Recht-been-Effen-Comfort-Bruiloft-liiketoiminta-Da.jpg">
+        <p>Pant</p>
+      </div>
 
-</section>
+    </div>
 
-
-<div id="fabricContainer" class="fabric-grid"></div>
-
-<div id="imageContainer" class="image-grid"></div>
-
-<section class="section">
-
-  <h2>Measurements</h2>
-
-  <div id="measurementContainer" class="measurement-grid">
-
-  </div>
-
-</section>
-
-<section class="section">
-
-  <h2>Order Summary</h2>
-
-  <div class="summary-box">
-
-    <button class="checkout-btn" onclick="saveCustomOrder()">
-  Proceed To Checkout
-</button>
+  </section>
 
 
-  <div class="summary-image-box">
-    <img id="summaryImage" src="" alt="">
-  </div>
+  <!-- ETHNIC WEAR -->
+  <section class="category">
 
-  <p><strong>Garment:</strong> <span id="summaryGarment">Not Selected</span></p>
+    <h2>Ethnic Wear</h2>
 
-  <p><strong>Color:</strong> <span id="summaryColor">Not Selected</span></p>
+    <div class="garment-grid">
 
-  <p><strong>Fabric:</strong> <span id="summaryFabric">Not Selected</span></p>
+      <div class="garment-card" onclick="openBuilder('Sherwani')">
+        <img src="https://i.postimg.cc/KzS54HBs/shadi-outfit.jpg">
+        <p>Sherwani</p>
+      </div>
 
-  <p><strong>Price:</strong> ₹<span id="summaryPrice">0</span></p>
+      <div class="garment-card" onclick="openBuilder('Jodhpuri')">
+        <img src="https://i.postimg.cc/bJcRdBkR/Black-Color-Heavy-Embroidered-Suiting-Fabric-Jodhpuri-Suit-Ethnic-Bandhgala-for-Men-Etsy.jpg">
+        <p>Jodhpuri</p>
+      </div>
+
+      <div class="garment-card" onclick="openBuilder('Kurta')">
+        <img src="https://i.postimg.cc/MT2YXFVH/NEXT-kurutashatsu-2XL-burakku.jpg">
+        <p>Kurta</p>
+      </div>
+
+      <div class="garment-card" onclick="openBuilder('Kurta Jacket Suit')">
+        <img src="https://i.postimg.cc/TwMch4gp/1053209062860404087.jpg">
+        <p>Kurta Jacket Suit</p>
+      </div>
+
+      <div class="garment-card" onclick="openBuilder('Pathani Suit')">
+        <img src="https://i.postimg.cc/7LTVHkGz/Melange-de-coton-vert-olive-Kurta-Shalwar-Costume-pakistanais-pour-homme.jpg">
+        <p>Pathani Suit</p>
+      </div>
+
+      <div class="garment-card" onclick="openBuilder('Nehru Jacket')">
+        <img src="https://i.postimg.cc/ZRtL0MpW/Mustard-Nehru-Jacket-for-Men-Festive-Wedding-Wear-Designer-Ethnic-Waistcoat.jpg">
+        <p>Nehru Jacket</p>
+      </div>
+
+      <div class="garment-card" onclick="openBuilder('Pajama')">
+        <img src="https://i.postimg.cc/pdnZWHhW/Kurta-Pajama-Buy-Latest-Indian-Kurta-Pajama-for-Men-Online-Bagtesh-Fashion.jpg">
+        <p>Pajama</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- LUXURY OUTERWEAR -->
+  <section class="category">
+
+    <h2>Luxury Outerwear</h2>
+
+    <div class="garment-grid">
+
+      <div class="garment-card" onclick="openBuilder('Hunter Coat')">
+        <img src="https://i.postimg.cc/vm6zYsgd/Vintage-Tweed-Men-s-Safari-Jackets-Herringbone-Hunting-Coat-Causal-Party-Wear-e-Bay.jpg">
+        <p>Hunter Coat</p>
+      </div>
+
+      <div class="garment-card" onclick="openBuilder('Jacket')">
+        <img src="https://i.postimg.cc/5tF34VYc/1081215823024471682.jpg">
+        <p>Jacket</p>
+      </div>
+
+      <div class="garment-card" onclick="openBuilder('Shrug Suit')">
+        <img src="https://i.postimg.cc/s2ZcjrQC/Black-Shrug-Set-for-Men-Embroidered-Wedding-Sherwani-for-Men-Jodhpuri-Groom-Sherwani-Diwali-outfi.jpg">
+        <p>Shrug Suit</p>
+      </div>
+
+      <div class="garment-card" onclick="openBuilder('Hunter Shirt')">
+        <img src="https://i.postimg.cc/R0nRSB3y/Instagram-(1).jpg">
+        <p>Hunter Shirt</p>
+      </div>
+
+    </div>
+
+  </section>
 
 </div>
 
-</section>
-
-
-  </div>
 <script>
 
-function selectGarment(el){
+function openBuilder(garment){
 
-  document.querySelectorAll(".garment-card").forEach(card=>{
-    card.classList.remove("active");
-  });
+  localStorage.setItem("selectedGarment", garment);
 
-  el.classList.add("active");
-
-  selectedGarment = el.querySelector("p").innerText;
-
-document.getElementById("summaryGarment").innerText = selectedGarment;
-
-showMeasurements(selectedGarment);
+  window.location.href = "builder.html";
 
 }
-
-function showMeasurements(garment){
-
-  let container = document.getElementById("measurementContainer");
-
-  container.innerHTML = "";
-
-  if(!measurements[garment]) return;
-
-  measurements[garment].forEach(item => {
-
-    let div = document.createElement("div");
-
-    div.className = "measurement-box";
-
-    div.innerHTML = `
-      <label>${item}</label>
-      <input type="text" placeholder="Enter ${item}">
-    `;
-
-    container.appendChild(div);
-
-  });
-
-}
-function selectColor(el, color){
-
-  document.querySelectorAll(".color-circle").forEach(c=>{
-    c.classList.remove("active");
-  });
-
-  el.classList.add("active");
-
-  selectedColor = color;
-  document.getElementById("summaryColor").innerText = color;
-
-  showFabricsForColor(color);
-}
-
-let selectedGarment = "";
-let selectedColor = "";
-let selectedFabric = "";
-let selectedImage = "";
-
-function selectFabric(el){
-
-  document.querySelectorAll(".fabric-card").forEach(f=>{
-    f.classList.remove("active");
-  });
-
-  el.classList.add("active");
-
-  selectedFabric = el.innerText;
-  document.getElementById("summaryFabric").innerText = selectedFabric;
-
-  showFabricImages(selectedColor, selectedFabric);
-}
-
-
-function showFabricImages(color, fabric){
-
-  let container = document.getElementById("imageContainer");
-
-  container.innerHTML = "";
-
-  if(!fabricImages[color] || !fabricImages[color][fabric]){
-    return;
-  }
-
-  fabricImages[color][fabric].forEach(img => {
-
-    let image = document.createElement("img");
-
-    image.src = img;
-
-    image.onclick = () => {
-
-  document.querySelectorAll(".image-grid img").forEach(i=>{
-    i.classList.remove("active");
-  });
-
-  image.classList.add("active");
-
-  selectedImage = img;
-
-};
-
-    container.appendChild(image);
-
-  });
-
-}
-
-const fabricMap = {
-  black: ["Cotton", "Wool", "Linen", "Silk"],
-  navy: ["Cotton", "Wool"],
-  grey: ["Wool", "Linen"],
-  brown: ["Cotton", "Linen"],
-  beige: ["Linen", "Cotton"],
-  white: ["Cotton", "Linen", "Silk"],
-  maroon: ["Wool", "Silk"]
-};
-
-
-const garmentPrices = {
-  Coat: 5999,
-  Waistcoat: 3499,
-  "Nehru Jacket": 4499,
-  Shirt: 2499,
-  Kurta: 2999,
-  "Hunter Shirt": 2799,
-  Pant: 2199,
-  Pajama: 1999
-};
-
-
-const fabricImages = {
-
-  black: {
-    Cotton: [
-      "https://via.placeholder.com/300x200?text=Black+Cotton+1",
-      "https://via.placeholder.com/300x200?text=Black+Cotton+2",
-      "https://via.placeholder.com/300x200?text=Black+Cotton+3",
-      "https://via.placeholder.com/300x200?text=Black+Cotton+4",
-      "https://via.placeholder.com/300x200?text=Black+Cotton+5"
-    ],
-    Wool: [
-      "https://via.placeholder.com/300x200?text=Black+Wool+1",
-      "https://via.placeholder.com/300x200?text=Black+Wool+2",
-      "https://via.placeholder.com/300x200?text=Black+Wool+3",
-      "https://via.placeholder.com/300x200?text=Black+Wool+4",
-      "https://via.placeholder.com/300x200?text=Black+Wool+5"
-    ],
-    Linen: [
-      "https://via.placeholder.com/300x200?text=Black+Linen+1",
-      "https://via.placeholder.com/300x200?text=Black+Linen+2",
-      "https://via.placeholder.com/300x200?text=Black+Linen+3",
-      "https://via.placeholder.com/300x200?text=Black+Linen+4",
-      "https://via.placeholder.com/300x200?text=Black+Linen+5"
-    ],
-    Silk: [
-      "https://via.placeholder.com/300x200?text=Black+Silk+1",
-      "https://via.placeholder.com/300x200?text=Black+Silk+2",
-      "https://via.placeholder.com/300x200?text=Black+Silk+3",
-      "https://via.placeholder.com/300x200?text=Black+Silk+4",
-      "https://via.placeholder.com/300x200?text=Black+Silk+5"
-    ]
-  },
-
-  navy: {
-    Cotton: [
-      "https://via.placeholder.com/300x200?text=Navy+Cotton+1",
-      "https://via.placeholder.com/300x200?text=Navy+Cotton+2",
-      "https://via.placeholder.com/300x200?text=Navy+Cotton+3",
-      "https://via.placeholder.com/300x200?text=Navy+Cotton+4",
-      "https://via.placeholder.com/300x200?text=Navy+Cotton+5"
-    ],
-    Wool: [
-      "https://via.placeholder.com/300x200?text=Navy+Wool+1",
-      "https://via.placeholder.com/300x200?text=Navy+Wool+2",
-      "https://via.placeholder.com/300x200?text=Navy+Wool+3",
-      "https://via.placeholder.com/300x200?text=Navy+Wool+4",
-      "https://via.placeholder.com/300x200?text=Navy+Wool+5"
-    ],
-    Linen: [
-      "https://via.placeholder.com/300x200?text=Navy+Linen+1",
-      "https://via.placeholder.com/300x200?text=Navy+Linen+2",
-      "https://via.placeholder.com/300x200?text=Navy+Linen+3",
-      "https://via.placeholder.com/300x200?text=Navy+Linen+4",
-      "https://via.placeholder.com/300x200?text=Navy+Linen+5"
-    ],
-    Silk: [
-      "https://via.placeholder.com/300x200?text=Navy+Silk+1",
-      "https://via.placeholder.com/300x200?text=Navy+Silk+2",
-      "https://via.placeholder.com/300x200?text=Navy+Silk+3",
-      "https://via.placeholder.com/300x200?text=Navy+Silk+4",
-      "https://via.placeholder.com/300x200?text=Navy+Silk+5"
-    ]
-  },
-
-  grey: {
-    Cotton: [
-      "https://via.placeholder.com/300x200?text=Grey+Cotton+1",
-      "https://via.placeholder.com/300x200?text=Grey+Cotton+2",
-      "https://via.placeholder.com/300x200?text=Grey+Cotton+3",
-      "https://via.placeholder.com/300x200?text=Grey+Cotton+4",
-      "https://via.placeholder.com/300x200?text=Grey+Cotton+5"
-    ],
-    Wool: [
-      "https://via.placeholder.com/300x200?text=Grey+Wool+1",
-      "https://via.placeholder.com/300x200?text=Grey+Wool+2",
-      "https://via.placeholder.com/300x200?text=Grey+Wool+3",
-      "https://via.placeholder.com/300x200?text=Grey+Wool+4",
-      "https://via.placeholder.com/300x200?text=Grey+Wool+5"
-    ]
-  },
-
-  brown: {
-    Cotton: [
-      "https://via.placeholder.com/300x200?text=Brown+Cotton+1",
-      "https://via.placeholder.com/300x200?text=Brown+Cotton+2",
-      "https://via.placeholder.com/300x200?text=Brown+Cotton+3",
-      "https://via.placeholder.com/300x200?text=Brown+Cotton+4",
-      "https://via.placeholder.com/300x200?text=Brown+Cotton+5"
-    ],
-    Linen: [
-      "https://via.placeholder.com/300x200?text=Brown+Linen+1",
-      "https://via.placeholder.com/300x200?text=Brown+Linen+2",
-      "https://via.placeholder.com/300x200?text=Brown+Linen+3",
-      "https://via.placeholder.com/300x200?text=Brown+Linen+4",
-      "https://via.placeholder.com/300x200?text=Brown+Linen+5"
-    ]
-  },
-
-  beige: {
-    Cotton: [
-      "https://via.placeholder.com/300x200?text=Beige+Cotton+1",
-      "https://via.placeholder.com/300x200?text=Beige+Cotton+2",
-      "https://via.placeholder.com/300x200?text=Beige+Cotton+3",
-      "https://via.placeholder.com/300x200?text=Beige+Cotton+4",
-      "https://via.placeholder.com/300x200?text=Beige+Cotton+5"
-    ],
-    Linen: [
-      "https://via.placeholder.com/300x200?text=Beige+Linen+1",
-      "https://via.placeholder.com/300x200?text=Beige+Linen+2",
-      "https://via.placeholder.com/300x200?text=Beige+Linen+3",
-      "https://via.placeholder.com/300x200?text=Beige+Linen+4",
-      "https://via.placeholder.com/300x200?text=Beige+Linen+5"
-    ]
-  },
-
-  white: {
-    Cotton: [
-      "https://via.placeholder.com/300x200?text=White+Cotton+1",
-      "https://via.placeholder.com/300x200?text=White+Cotton+2",
-      "https://via.placeholder.com/300x200?text=White+Cotton+3",
-      "https://via.placeholder.com/300x200?text=White+Cotton+4",
-      "https://via.placeholder.com/300x200?text=White+Cotton+5"
-    ],
-    Linen: [
-      "https://via.placeholder.com/300x200?text=White+Linen+1",
-      "https://via.placeholder.com/300x200?text=White+Linen+2",
-      "https://via.placeholder.com/300x200?text=White+Linen+3",
-      "https://via.placeholder.com/300x200?text=White+Linen+4",
-      "https://via.placeholder.com/300x200?text=White+Linen+5"
-    ],
-    Silk: [
-      "https://via.placeholder.com/300x200?text=White+Silk+1",
-      "https://via.placeholder.com/300x200?text=White+Silk+2",
-      "https://via.placeholder.com/300x200?text=White+Silk+3",
-      "https://via.placeholder.com/300x200?text=White+Silk+4",
-      "https://via.placeholder.com/300x200?text=White+Silk+5"
-    ]
-  },
-
-  maroon: {
-    Wool: [
-      "https://via.placeholder.com/300x200?text=Maroon+Wool+1",
-      "https://via.placeholder.com/300x200?text=Maroon+Wool+2",
-      "https://via.placeholder.com/300x200?text=Maroon+Wool+3",
-      "https://via.placeholder.com/300x200?text=Maroon+Wool+4",
-      "https://via.placeholder.com/300x200?text=Maroon+Wool+5"
-    ],
-    Silk: [
-      "https://via.placeholder.com/300x200?text=Maroon+Silk+1",
-      "https://via.placeholder.com/300x200?text=Maroon+Silk+2",
-      "https://via.placeholder.com/300x200?text=Maroon+Silk+3",
-      "https://via.placeholder.com/300x200?text=Maroon+Silk+4",
-      "https://via.placeholder.com/300x200?text=Maroon+Silk+5"
-    ]
-  }
-
-};
-
-
-function showFabricsForColor(color){
-
-  const container = document.getElementById("fabricContainer");
-
-  container.innerHTML = "";
-
-  let fabrics = fabricMap[color];
-
-  fabrics.forEach(fabric => {
-
-    let div = document.createElement("div");
-    div.className = "fabric-card";
-    div.innerText = fabric;
-
-    div.onclick = () => selectFabric(div);
-
-    container.appendChild(div);
-
-  });
-
-}
-
-const measurements = {
-
-  Coat: [
-    "Length",
-    "Chest",
-    "Stomach",
-    "Hip",
-    "Shoulder",
-    "Sleeve Length",
-    "Neck",
-    "Cross Back"
-  ],
-
-  Waistcoat: [
-    "Length",
-    "Chest",
-    "Stomach",
-    "Hip"
-  ],
-
-  "Nehru Jacket": [
-    "Length",
-    "Chest",
-    "Stomach",
-    "Hip",
-    "Shoulder",
-    "Neck"
-  ],
-
-  Shirt: [
-    "Length",
-    "Chest",
-    "Stomach",
-    "Hip",
-    "Shoulder",
-    "Sleeve Length",
-    "Neck",
-    "Cross Back"
-  ],
-
-  Kurta: [
-    "Length",
-    "Chest",
-    "Stomach",
-    "Hip",
-    "Shoulder",
-    "Sleeve Length",
-    "Neck"
-  ],
-
-  "Hunter Shirt": [
-    "Length",
-    "Chest",
-    "Stomach",
-    "Hip",
-    "Shoulder",
-    "Sleeve Length",
-    "Neck"
-  ],
-
-  Pant: [
-    "Waist",
-    "Hips",
-    "Length",
-    "Inside",
-    "Bottom",
-    "Knee",
-    "Thigh",
-    "Fly"
-  ],
-
-  Pajama: [
-    "Waist",
-    "Hips",
-    "Length",
-    "Inside",
-    "Bottom"
-  ]
-};
-
-
-function saveCustomOrder(){
-
-  const measurementInputs = document.querySelectorAll(".measurement-box input");
-
-  let measurementData = {};
-
-  measurementInputs.forEach(input => {
-
-    const label = input.previousElementSibling.innerText;
-
-    measurementData[label] = input.value;
-
-  });
-
-  const customOrder = {
-  garment: selectedGarment,
-  color: selectedColor,
-  fabric: selectedFabric,
-  image: selectedImage,
-  price: garmentPrices[selectedGarment],
-  measurements: measurementData
-};
-
-  localStorage.setItem(
-    "customOrder",
-    JSON.stringify(customOrder)
-  );
-
-  window.location.href = "cart.html";
-
-}
-
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -888,6 +590,15 @@ function updateCartCount(){
 }
 
 updateCartCount();
+
+function toggleMenu(){
+
+  document
+    .querySelector(".nav-right")
+    .classList.toggle("active");
+
+}
 </script>
+
 </body>
 </html>

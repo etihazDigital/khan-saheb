@@ -16,51 +16,129 @@
     }
      
 
-    .navbar{
+/* NAVBAR */
+
+.navbar{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:15px 20px;
-  flex-wrap:nowrap;   /* VERY IMPORTANT */
+  align-items:center;
+  padding:15px 40px;
+  background:#000;
+  border-bottom:1px solid #222;
+  position:relative;
 }
 
-    .navbar a{
-      color:#fff;
-      text-decoration:none;
-      margin-left:15px;
-    }
- .nav-right{
-display:flex;
-align-items:center;
-gap:15px;
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  color:white;
+}
+
+.logo img{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:25px;
 }
 
 .nav-links{
   display:flex;
-  gap:18px;
-  align-items:center;
-  white-space:nowrap;   /* prevents breaking */
+  gap:20px;
 }
 
-
-.cart-icon{
-  margin-left:15px;
-  white-space:nowrap;
+.nav-links a{
+  color:#ccc;
+  text-decoration:none;
+  transition:0.3s;
 }
 
-    .logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-family:'Playfair Display';
-font-size:22px;
+.nav-links a:hover{
+  color:gold;
+}
+
+#cart-btn{
+  background:gold;
+  color:black;
+  padding:10px 15px;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.menu-toggle{
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.navbar{
+  padding:14px 16px;
+}
+
+.logo{
+  font-size:18px;
+  gap:8px;
 }
 
 .logo img{
-width:40px;
-height:40px;
-border-radius:50%;
-object-fit:cover;
+  width:34px;
+  height:34px;
+}
+
+.menu-toggle{
+  display:block;
+}
+
+.nav-right{
+  position:absolute;
+  top:70px;
+  left:0;
+  width:100%;
+  background:#0d0d0d;
+  border-top:1px solid #222;
+
+  display:none;
+  flex-direction:column;
+  align-items:flex-start;
+
+  padding:20px;
+  z-index:999;
+}
+
+.nav-right.active{
+  display:flex;
+}
+
+.nav-links{
+  flex-direction:column;
+  width:100%;
+  gap:18px;
+}
+
+.nav-links a{
+  font-size:15px;
+}
+
+#cart-btn{
+  margin-top:20px;
+  width:100%;
+  text-align:center;
+}
+
 }
 
     .section{
@@ -133,35 +211,13 @@ object-fit:cover;
 
 @media (max-width: 768px){
 
-  /* NAVBAR FIX */
-  .navbar{
-    flex-direction:column;
-    gap:10px;
-    align-items:flex-start;
-  }
-
-  .left{
-    width:100%;
-    justify-content:flex-start;
-  }
-
-  .nav-links{
-    width:100%;
-    justify-content:flex-start;
-    flex-wrap:wrap;
-    gap:10px;
-  }
-
-  .right{
-    width:100%;
-    justify-content:space-between;
-  }
+  
 
   /* PRODUCT GRID */
   .products{
-    grid-template-columns:1fr;
-    padding:10px;
-  }
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
 
   /* PRODUCT CARD */
   .product{
@@ -193,6 +249,32 @@ object-fit:cover;
   h1,h2,h3{
     font-size:18px;
   }
+
+  .card img{
+  height:140px;
+}
+
+.card h3{
+  font-size:14px;
+}
+
+.card p{
+  font-size:13px;
+}
+
+.btn{
+  width:100%;
+  padding:10px;
+  font-size:13px;
+}
+
+.section{
+  padding:30px 14px;
+}
+
+.logo span{
+  font-size:16px;
+}
 }
   </style>
 
@@ -206,6 +288,12 @@ object-fit:cover;
   <img src="https://i.postimg.cc/66Z4CL7j/khan-logo.jpg" alt="logo">
   <span>Khan Saheb</span>
 </div>
+
+<div class="menu-toggle" onclick="toggleMenu()">
+  ☰
+</div>
+
+
 <div class="nav-right">
 
 <div class="nav-links">
@@ -223,9 +311,8 @@ object-fit:cover;
 <div id="cart-items"></div>
 <p id="total">Total: ₹0</p>
 </div>
+
 </div>
-</div>
-  </div>
 </div>
 
 <!-- TITLE -->
@@ -612,6 +699,15 @@ function showToast(product){
 }
 
 updateCartCount();
+
+function toggleMenu(){
+
+  document
+    .querySelector(".nav-right")
+    .classList.toggle("active");
+
+}
+
 </script>
 <div id="toast" class="toast">Added to Cart</div>
 </body>
